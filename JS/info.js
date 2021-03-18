@@ -31,6 +31,16 @@ moreBtn.addEventListener('click', ( ) => {
  
 
 
+//  swiper
+document.querySelector('.btn2').addEventListener('click', function(){
+   document.querySelector('.swiper-wrapper').style.transform = 'translate(-100vw)';
+});
+document.querySelector('.btn3').addEventListener('click', function(){
+    document.querySelector('.swiper-wrapper').style.transform = 'translate(-200vw)';
+ });
+ 
+ 
+ 
 
 
 // // 현재 스크롤에 따라 Nav 고정하는 방법
