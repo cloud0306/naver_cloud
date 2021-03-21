@@ -159,10 +159,11 @@ goToSlide(0);
 
 // Section03 - Mobile Card Box Accordion JS
 
-var cardBox = document.querySelectorAll('.wrap.mo .card-box ul li');
-var cardBoxInfo = document.querySelectorAll('.wrap.mo .card-box ul li .info');
+var cardBox = document.querySelectorAll('.wrap.mo .card-box ul li'); // content
+var cardBoxInfo = document.querySelectorAll('.wrap.mo .card-box ul li .info'); 
+// 오픈 영역
 var cardBoxArrow = document.querySelectorAll('.wrap.mo .card-box ul li strong');
-
+// 닫힌 영역
 var cardOpen = false;
 
 function cardBoxOpen(idx) {

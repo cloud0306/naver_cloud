@@ -5,8 +5,8 @@
    display: none;
 }
 .clfix:before, .clfix:after {
-   line-height: 0;
-   display: table;
+   /* line-height: 0; */
+   /* display: table; */
    content: '';
 }
 /* html {

@@ -139,6 +139,9 @@ body{
     transform: translateY(8px);
   }
 }
+.section01 .bottomBtn button:hover{
+  background-image:url(../images/down_arrow_g.png);
+}
 .section01 video {
   min-width: 100%;
   min-height: 100%;
@@ -183,7 +186,7 @@ body{
   line-height: 24px;
 }
 .pictogram_box ul li img {
-  width: 210px;
+  width: 240px;
   margin: 32px 0 42px;
 }
 .pictogram_box ul li dl dt {
@@ -602,6 +605,7 @@ body{
   line-height: 1.6;
   color: var(--black-color);
   transition: 0.3s;
+  width: 100%;
 }
 .info_bottom .list_bar ul li .en {
   font-family: "Calibre-webfont", sans-serif;
@@ -870,6 +874,9 @@ body{
     padding: 117px 90px 96px;
     max-width: 1476px;
   }
+  .pictogram_box ul li img{
+    width:210px
+  }
   .it01 .it01_wrap {
     padding: 0 90px;
   }
@@ -950,6 +957,9 @@ body{
   }
   .section02_wrap .pictogram_box ul li:nth-child(4){
     margin-bottom: 0;
+  }
+  .pictogram_box ul li img{
+    width:210px;
   }
   .pictogram_box ul li dl dd a{
     margin-top:12px;
@@ -1164,16 +1174,20 @@ body{
       display: block;
       padding:0 24px 40px;
   }
-  .section02_wrap .pb_visible dl {
+  .section02_wrap .pb_visible dl.content_box {
     border-top:1px solid var(--grey-light2-color);
     position: relative;
+    cursor: pointer;
   }
-  .section02_wrap .pb_visible dl dt{
+  .section02_wrap .pb_visible dl.content_box:last-child{
+    border-bottom:1px solid var(--grey-light2-color);
+  }
+  .section02_wrap .pb_visible dl dt.open {
     padding:18px 0 22px;
     font-size:0;
     position:relative;
   }
-  /* .section02_wrap .pb_visible dl dt:after{
+  .section02_wrap .pb_visible dl dt.open:after{
     content: '';
     width: 18px;
     height: 18px;
@@ -1182,8 +1196,11 @@ body{
     position: absolute;
     top: 48px;
     right: 0;
-    transition: .4s;
-  } */
+    transition:transform .3s;
+  }
+  .section02_wrap .pb_visible dl.content_box.active dt.open:after{
+    transform:rotate(180deg);
+  }
   .section02_wrap .pb_visible dl dt .moreBtn{
     display: block;
     width: 18px;
@@ -1198,9 +1215,9 @@ body{
     transition: transform 300ms ease-in-out;
     cursor: pointer;
   }
-  .section02_wrap .pb_visible dl dt .moreBtn.clicked{
+  /* .section02_wrap .pb_visible dl.content_box dt .moreBtn.clicked{
     transform: rotate(-180deg);
-  }
+  } */
   .section02_wrap .pb_visible dl dt img{
     width:64px;
     display: inline-block;
@@ -1227,14 +1244,20 @@ body{
     display: block;
     margin-top: 4px;
   }
-  .section02_wrap .pb_visible dl .menu_block{
-    display: none;
-    transition:.8s;
+  .section02_wrap .pb_visible .content_box .menu_block{
+    position:relative;
+    height:0;
+    overflow:hidden;
+    overflow-y:auto;
+    transition:.3s;
   }
-  .section02_wrap .pb_visible dl .menu_block.actives{
-    display:block;
+  .section02_wrap .pb_visible .content_box.active .menu_block{
+    height:72px;
     padding-bottom: 22px;
-    transition:.8s;
+    box-sizing: content-box; /* 높이 72, border-box로 되 있어서 padding-bottom 안먹힌다 */
+  }
+  .section02_wrap .pb_visible .content_box:last-child.active .menu_block{
+    padding-bottom: 0;
   }
   .section02_wrap .pb_visible dl dd p{
     font-size: 15px;
@@ -1658,6 +1681,8 @@ body{
     padding:0;
     font-size: 14px;
     line-height: 24px;
+    width: 100%;
+    display: block;
   }
   .info_bottom .list_bar ul li i{
     bottom:10px;
@@ -1703,15 +1728,16 @@ body{
   padding:76px 24px 0;
   border-top:0;
 }
-.location_wrap .global_list dl{
+.location_wrap .global_list dl.maplink{
     font-size: 0;
     position: relative;
     display: block;
     padding:0;
 }
-.location_wrap .global_list dl:first-child{
+.location_wrap .global_list dl.maplink:first-child{
   border-top: 1px solid #eee;
 }
+
 .location_wrap .global_list dl dt{
   width:100%;
   font-size: 18px;
@@ -1731,26 +1757,38 @@ body{
   position: absolute;
   top: 20px;
   right: 0;
-  transition: .4s;
+  transition: .3s;
+}
+.location_wrap .global_list dl.maplink.active dt:after{
+  transform:rotate(180deg);
 }
 .location_wrap .global_list dl dd{
-  padding-bottom: 24px;
   width:100%;
-  display: none;
+  height:0;
+  overflow: hidden;
+  overflow-y:auto;
+  /* 부모요소의 범위를 넘어가는 자식요소의 부분이 있을 경우 해당 부분을 보이지 않도록  처리하고,    사용자가 해당 부분을 확인 할 수 있도록 스크롤바를 표시 한다
+  (내용이 넘칠때만 세로 스크롤바 표시) */
+  position:relative;
+  transition:.3s;
+}
+.location_wrap .global_list dl.maplink.active dd{
+  height:100px;
+  padding-bottom: 24px;
 }
 .global_list dl dd .address{
+  /* margin-right: 0;
+  width:100%; */
   display: none;
-  margin-right: 0;
-  width:100%;
 }
 .global_list dl dd .map{
-  display:none;
+  display: none;
 }
 .global_list dl dd .address a{
   display: block;
 }
 .global_list dl dd .m_address{
-  display: none;
+  display: block;
 }
 .global_list dl dd .m_address address{
   font-size: 14px;
@@ -1951,3 +1989,7 @@ content: "";
       bottom:24px;
       right:24px;
   }
+  #go-top:hover {
+    background: url(../images/top_btn_hover.png)no-repeat center;
+    background-size: cover;
+    

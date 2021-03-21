@@ -1,4 +1,48 @@
- // langs toggle
+// Header hamburger JS
+
+var mobileMenu = document.querySelectorAll('.m_menu');
+var navMenu = document.querySelectorAll('.m-nav');
+var closeBtn = document.querySelectorAll('.close-btn');
+var menuOpen = false;
+
+// 3줄 .m_menu 클래스가 들어있는 모든 요소들 선택해서 array(배열)가 반환된다
+// idx는 그 array에서의 인덱스를 지정해주는 거
+
+
+function hamburgerClick(idx) {  //(idx)는 function의 매개변수 idx를 넘기는 것
+   mobileMenu[idx].addEventListener('click',function(ev){   
+    // [idx]는 배열에서 idx번째 요소를 말한다
+    //12번줄이 실행하기 위해서는 [idx]번째 요소를 알려줘야 한다
+    
+        ev.preventDefault();  
+        // click 대상 즉 mobileMenu 가 a태그니까  a태그의 하이퍼링크 속성을 막는다
+        
+        navMenu[idx].classList.add('active');
+        menuOpen = true;
+    });
+    closeBtn[idx].addEventListener('click',function(ev){
+        ev.preventDefault();
+        navMenu[idx].classList.remove('active');
+        menuOpen = false;
+    });
+    }
+
+    // querySelectorAll 을 사용했기 때문에 배열로 반환하기 때문에 반복문을 사용해야 한다
+    for(var i = 0; i < mobileMenu.length; i++) {
+    hamburgerClick(i);
+    }
+
+
+
+
+
+
+
+
+
+
+
+// langs toggle
 // 클릭되는 영역
 const langBtn = document.querySelector('.lang_btn');
  // 메뉴 목록
@@ -18,17 +62,42 @@ langBtn.addEventListener('click', ( ) => {
 
 
 // 기업소개 pictogram box
-const moreBtn = document.querySelector('.moreBtn');
-const menu = document.querySelector('.menu_block');
+// const moreBtn = document.querySelector('.moreBtn');
+// const menu = document.querySelector('.menu_block');
 
 
-moreBtn.addEventListener('click', ( ) => {
+// moreBtn.addEventListener('click', ( ) => {
 
-    menu.classList.toggle('actives');
-    moreBtn.classList.toggle('clicked');
+//     menu.classList.toggle('actives');
+//     moreBtn.classList.toggle('clicked');
 
- });
- 
+//  });
+
+const accordion = document.querySelectorAll('.content_box');
+
+
+ // 다른 accordion 클릭시 닫혀이지 않은 코드
+// 조건은 accordion.length(갯수) 미만으로 반복
+for(i = 0;  i < accordion.length; i++){
+    accordion[i].addEventListener('click', function(){
+        this.classList.toggle('active'); // 내가 클릭한 그것(accordion)을 토글
+
+    });
+}
+
+const accordionGlobal = document.querySelectorAll('.maplink');
+
+for(i = 0; i < accordionGlobal.length; i++ ){
+    accordionGlobal[i].addEventListener('click', function(){
+        this.classList.toggle('active');
+    });
+}
+
+
+
+
+
+
 
 
 //  swiper
